@@ -1,0 +1,20 @@
+linters:
+  enable:
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - typecheck
+    - unused
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - errcheck
+  exclude:
+    - "Error return value of .(Close|Log|Print|Printf|Println|Panic|Panicf|Fatal|Fatalf|Error|Errorf) is not checked"
+
+run:
+  timeout: 5m
