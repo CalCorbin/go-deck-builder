@@ -1,0 +1,43 @@
+fail_fast: true
+
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.24.0
+    hooks:
+      - id: gitleaks
+  - repo: https://github.com/golangci/golangci-lint
+    rev: v1.64.5
+    hooks:
+      - id: golangci-lint
+        stages: [commit]
+        files: (\.go$|^go\.(mod|sum)$)
+  - repo: https://github.com/renovatebot/pre-commit-hooks
+    rev: 39.178.1
+    hooks:
+      - id: renovate-config-validator
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+    - id: check-added-large-files
+      args: ['--maxkb=1024']
+    - id: check-executables-have-shebangs
+    - id: check-merge-conflict
+    - id: check-shebang-scripts-are-executable
+    - id: check-symlinks
+    - id: check-toml
+    - id: check-yaml
+      args: [--unsafe]
+    - id: debug-statements
+    - id: destroyed-symlinks
+    - id: detect-private-key
+    - id: end-of-file-fixer
+    - id: fix-byte-order-marker
+    - id: mixed-line-ending
+    - id: pretty-format-json
+      # https://pre-commit.com/#regular-expressions
+      exclude: |
+          (?x)^(
+              .vscode/launch.json|
+              .vscode/settings.json
+          )$
+      args: ['--autofix', '--indent=2', '--no-sort-keys']
