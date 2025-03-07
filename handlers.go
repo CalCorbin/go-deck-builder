@@ -24,7 +24,11 @@ func GetCards(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(cards)
+
+	if err := json.NewEncoder(w).Encode(cards); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 }
 
 func CreateDeck(w http.ResponseWriter, r *http.Request) {
@@ -38,7 +42,11 @@ func CreateDeck(w http.ResponseWriter, r *http.Request) {
 	decks[deck.ID] = deck
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(deck)
+
+	if err := json.NewEncoder(w).Encode(deck); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 }
 
 func GetDeck(w http.ResponseWriter, r *http.Request) {
@@ -52,7 +60,11 @@ func GetDeck(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(deck)
+
+	if err := json.NewEncoder(w).Encode(deck); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 }
 
 func UpdateDeck(w http.ResponseWriter, r *http.Request) {
@@ -69,7 +81,11 @@ func UpdateDeck(w http.ResponseWriter, r *http.Request) {
 	decks[id] = updatedDeck
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(updatedDeck)
+
+	if err := json.NewEncoder(w).Encode(updatedDeck); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 }
 
 func DeleteDeck(w http.ResponseWriter, r *http.Request) {
