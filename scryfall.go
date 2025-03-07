@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-const scryfallApi = "https://api.scryfall.com/cards/search?q="
+const scryfallAPI = "https://api.scryfall.com/cards/search?q="
 
 func FetchCards(query string) ([]Card, error) {
 	// Hit the scryfall API and create our response and error variables
