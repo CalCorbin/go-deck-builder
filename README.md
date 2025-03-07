@@ -31,4 +31,4 @@ The Go Deck Builder integrates with the [Scryfall API](https://scryfall.com/docs
 
 ## Pull Requests
 
-1. Before submitting a pull request run `golangcli-run lint`. Lint checks are run on every pull request and will fail if there are any errors.
+1. Before submitting a pull request run `golangci-lint run`. Lint checks are run on every pull request and will fail if there are any errors.
